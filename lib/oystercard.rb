@@ -17,4 +17,17 @@ MAXIMUM_BALANCE = 90
     @balance -= fare
   end
 
+  def touch_in
+  
+  end
+
+  def touch_out
+
+  end
+
+  def in_journey?
+    false
+  end
+
+
 end
