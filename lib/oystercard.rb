@@ -11,6 +11,7 @@ MINIMUM_FARE = 2
   def initialize
     @balance = 0
     @in_use = false
+    @entry_station = nil
   end
 
   def top_up(amount)
@@ -18,16 +19,18 @@ MINIMUM_FARE = 2
    @balance += amount
   end
 
-  def touch_in
+  def touch_in(station)
     raise "Insufficient funds. Please top up!" if @balance < MINIMUM_BALANCE
     @in_use = true
     return "You've touched in"
+    @entry_station = station
   end
 
   def touch_out
     deduct(MINIMUM_FARE)
     @in_use = false
     return "You've touched out"
+    @entry_station = nil
   end
 
   def in_journey?
@@ -42,6 +45,12 @@ MINIMUM_FARE = 2
   def deduct(amount)
     @balance -= amount
   end
+
+  def entry_station
+
+  end
+
+
 
 private :deduct
 
