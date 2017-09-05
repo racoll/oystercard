@@ -36,4 +36,9 @@ describe Oystercard do
     expect(subject).not_to be_in_journey
   end
 
+  describe "#check_balance" do
+    it { is_expected.to respond_to(:check_balance) }
+  end
+
+
 end

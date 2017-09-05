@@ -30,7 +30,11 @@ MAXIMUM_BALANCE = 90
   end
 
   def in_journey?
-  @in_use
+    @in_use
+  end
+
+  def check_balance
+    @balance
   end
 
 end
