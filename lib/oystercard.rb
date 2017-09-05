@@ -33,5 +33,4 @@ MAXIMUM_BALANCE = 90
   @in_use
   end
 
-
 end
