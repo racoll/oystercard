@@ -25,7 +25,7 @@ MINIMUM_FARE = 2
   end
 
   def touch_out
-    deduct
+    deduct(MINIMUM_FARE)
     @in_use = false
     return "You've touched out"
   end
@@ -39,12 +39,10 @@ MINIMUM_FARE = 2
     # fail "Insufficient funds. Please top up!" if @balance < 1
   end
 
-
-
-  def deduct
-    @balance -= MINIMUM_FARE
+  def deduct(amount)
+    @balance -= amount
   end
 
-# private :deduct
+private :deduct
 
 end

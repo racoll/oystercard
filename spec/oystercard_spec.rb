@@ -23,9 +23,10 @@ describe Oystercard do
 
   describe '#deduct' do
     it "is able to deduct from balance" do
-
-    expect(subject).to respond_to(:deduct)
-    expect { subject.deduct}.to change{ subject.balance }.by(-Oystercard::MINIMUM_FARE)
+      amount = ((Oystercard::MINIMUM_BALANCE) - (subject.balance))
+      # subject.top_up(amount)
+    # expect(subject).to respond_to(:deduct, amount)
+    expect { subject.send(:deduct, amount)}.to change{ subject.balance }.by(-amount)
     end
   end
 
