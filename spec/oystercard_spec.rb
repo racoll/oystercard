@@ -22,8 +22,12 @@ describe Oystercard do
     end
 
   describe '#deduct' do
-    it { is_expected.to respond_to(:deduct).with(1).argument }
+    it "is able to deduct from balance" do
+    expect(subject).to respond_to(:deduct)
+    expect { subject.deduct(2)}.to change{ subject.balance }.by(-Oystercard::MINIMUM_FARE)
+    end
   end
+
 
 
   it "is initially not in a journey" do
