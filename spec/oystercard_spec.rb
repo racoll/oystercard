@@ -6,11 +6,10 @@ describe Oystercard do
 #  let(:exit_station) {double :station}
 
 
-  it 'stores exit station' do
+  it 'stores journey history' do
     subject.top_up(5)
-    subject.touch_in(station)
-    allow(subject).to receive(:entry_and_exit).and_return(1)
-    expect{subject.touch_out(station)}.to change{subject.entry_and_exit.count}.by(1)
+    # allow(subject).to receive(:journey_history).and_return(1)
+    expect{subject.touch_in(station)}.to change{subject.journey_history.count}.by(1)
   end
 
 

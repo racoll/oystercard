@@ -4,15 +4,14 @@ MAXIMUM_BALANCE = 90
 MINIMUM_BALANCE = 1
 MINIMUM_FARE = 2
 
-  attr_reader :balance, :in_journey, :entry_station, :exit_station, :entry_and_exit
+  attr_reader :balance, :in_journey, :entry_station, :exit_station, :journey_history
 
 
   def initialize
     @balance = 0
     @in_journey = false
     @entry_station = nil
-    @journey_history = nil
-    entry_and_exit = Hash.new
+    @journey_history = Hash.new
   end
 
   def top_up(amount)
@@ -23,15 +22,16 @@ MINIMUM_FARE = 2
   def touch_in(station)
     raise "Insufficient funds. Please top up!" if balance < MINIMUM_BALANCE
     @in_journey = true
-    return "You've touched in"
     @entry_station = station
+    @journey_history.store(:entry_station, station)
+    return "You've touched in"
   end
 
   def touch_out(station)
     deduct(MINIMUM_FARE)
     @in_journey = false
-    return "You've touched out"
     @entry_station = nil
+    return "You've touched out"
   end
 
   # def in_journey?
