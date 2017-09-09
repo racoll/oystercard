@@ -12,6 +12,7 @@ MINIMUM_FARE = 2
     @in_journey = false
     @entry_station = nil
     @journey_history = Hash.new
+    @exit_station = nil
   end
 
   def top_up(amount)
@@ -32,6 +33,7 @@ MINIMUM_FARE = 2
     @in_journey = false
     @entry_station = nil
     return "You've touched out"
+    @exit_station = station
   end
 
   # def in_journey?
@@ -52,6 +54,10 @@ MINIMUM_FARE = 2
     @entry_station = station
   end
 
+
+  def exit_station(station)
+    @exit_station = station
+  end
 
 
 private :deduct

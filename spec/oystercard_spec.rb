@@ -3,7 +3,12 @@ require 'station'
 
 describe Oystercard do
   let(:station){double :station}
-#  let(:exit_station) {double :station}
+  # let(:exit_station) {double :station}
+
+
+  it "has an empty list of journeys by default" do
+    expect(subject.journey_history).to be_empty
+  end
 
 
   it 'stores journey history' do
@@ -68,12 +73,21 @@ describe Oystercard do
     it { is_expected.to respond_to(:check_balance) }
   end
 
-  describe "entry_station" do
+  describe "#entry_station" do
     let(:station){ double :station }
     it "stores the entry station of current journey after touch in" do
     subject.top_up(5)
     subject.touch_in(station)
     expect(subject.entry_station(station)).to eq(station)
+    end
+  end
+
+  describe "#exit_station" do
+    it "stores exit station" do
+      subject.top_up(5)
+      subject.touch_in(station)
+      subject.touch_out(station)
+      expect(subject.exit_station(station)).to eq(station)
     end
   end
 
